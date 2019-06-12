@@ -5,6 +5,7 @@ import Friend from "./Friend.jsx";
 
 export default class FriendList extends Component {
   state = { friends: [], error: "", loading: false };
+
   componentDidMount() {
     axios
       .get("http://localhost:5000/friends")
