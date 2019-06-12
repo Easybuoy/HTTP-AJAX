@@ -1,9 +1,16 @@
 import React from "react";
+import { Navbar as StyledNavbar } from "../../styles/Styles";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <div>
-      <p>Navbar</p>
-    </div>
+    <StyledNavbar>
+      <Link className="nav-item" to="/">
+        FRIENDS
+      </Link>
+      <Link className="nav-item" to="/addfriend">
+        ADD FRIEND
+      </Link>
+    </StyledNavbar>
   );
 }

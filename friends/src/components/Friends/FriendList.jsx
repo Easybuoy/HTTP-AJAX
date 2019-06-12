@@ -3,6 +3,8 @@ import axios from "axios";
 
 import Friend from "./Friend.jsx";
 
+import { CardGroup, H1 } from "../../styles/Styles.js";
+
 export default class FriendList extends Component {
   state = { friends: [], error: "", loading: false };
 
@@ -27,24 +29,20 @@ export default class FriendList extends Component {
   };
 
   render() {
+    // {this.state.loading && <div>Loading</div>}
+
+    // {this.state.error && <div>{this.state.error}</div>}
     return (
-      <div>
-        {this.state.loading && <div>Loading</div>}
-
-        {this.state.error && <div>{this.state.error}</div>}
-
-        {this.state.friends && (
-          <div>
-            {this.state.friends.map(friend => (
-              <Friend
-                friend={friend}
-                key={friend.id}
-                handleDeleteFriend={this.handleDeleteFriend}
-              />
-            ))}
-          </div>
-        )}
-      </div>
+      <CardGroup>
+        <H1>Friends</H1>
+        {this.state.friends.map(friend => (
+          <Friend
+            friend={friend}
+            key={friend.id}
+            handleDeleteFriend={this.handleDeleteFriend}
+          />
+        ))}
+      </CardGroup>
     );
   }
 }
