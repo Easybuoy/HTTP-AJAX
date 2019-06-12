@@ -14,6 +14,18 @@ export default class FriendList extends Component {
       .finally(() => this.setState({ loading: false }));
   }
 
+  handleDeleteFriend = id => {
+    if (window.confirm("Are you sure you want to delete this friend?")) {
+      axios
+        .delete(`http://localhost:5000/friends/${id}`)
+        .then(res => {
+          this.setState({ friends: res.data });
+        })
+        .catch(err => this.setState({ error: "Error Deleting Friend" }))
+        .finally(() => this.setState({ loading: false }));
+    }
+  };
+
   render() {
     return (
       <div>
@@ -24,7 +36,11 @@ export default class FriendList extends Component {
         {this.state.friends && (
           <div>
             {this.state.friends.map(friend => (
-              <Friend friend={friend} key={friend.id} />
+              <Friend
+                friend={friend}
+                key={friend.id}
+                handleDeleteFriend={this.handleDeleteFriend}
+              />
             ))}
           </div>
         )}
