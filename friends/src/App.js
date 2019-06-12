@@ -12,6 +12,7 @@ function App() {
     <Router>
       <Navbar />
       <Route exact path="/addfriend" component={NewFriend} />
+      <Route exact path="/friend/:friendId" component={NewFriend} />
       <Route exact path="/" component={FriendList} />
     </Router>
   );
